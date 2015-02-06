@@ -1,0 +1,10 @@
+##Read the data. read only the relevand lines and then read in the header and set the names
+data <- read.table("household_power_consumption.txt",skip = 66637,nrows=2880,sep = ";")
+hdr <- read.table("household_power_consumption.txt",header=TRUE,nrows=1,sep = ";")
+colnames(data) <- names(hdr)
+
+
+#create the plot and save the png file
+png(filename = "plot1.png",width = 480, height = 480)
+hist(data$Global_active_power, col = "red",xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
+dev.off()
